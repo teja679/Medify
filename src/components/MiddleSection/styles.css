@@ -1,0 +1,62 @@
+.main-section>h2 {
+    color: #1B3C74;
+}
+
+.section1 {
+    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+    padding: 1.2rem 0;
+}
+
+.section1-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.section1-card {
+    width: 20%;
+    box-sizing: border-box;
+    background: #FAFBFE;
+    margin: 10px;
+    color: #5C6169;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.section1-card>img {
+    width: 80px;
+}
+
+.view-all-btn {
+    border: none;
+    color: #fff;
+    background: #2AA7FF;
+    padding: 10px 1.5rem;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.section2 {
+    background-color: #fff;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.section2-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.specialist-div>h3,
+.section1>h2,
+.section2>h2 {
+    color: #1B3C74;
+}
+
+.specialist-div>p {
+    color: #2AA7FF;
+}
