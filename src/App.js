@@ -3,11 +3,13 @@ import './App.css';
 import HomePage from './components/HomePage/HomePage';
 import DetailsPage from './components/DetailsPage/DetailsPage';
 import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
 
     <div className='App'>
+      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

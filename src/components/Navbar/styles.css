@@ -1,0 +1,55 @@
+.navbar-container {
+    width: 100%;
+    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+    font-family: Poppins;
+
+}
+
+.navbar-container * {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.navbar-header {
+    background-color: #2AA7FF;
+    color: #fff;
+    padding: 1rem;
+}
+
+.navbar-icon>img {
+    height: 30px;
+}
+
+.navbar-body {
+    display: flex;
+    margin: 0 2rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+}
+
+.navbar-btns {
+    border: none;
+    background-color: inherit;
+    padding: 1rem;
+}
+
+.my-bookings-btn {
+    border: none;
+    color: #fff;
+    background: #2AA7FF;
+    padding: 10px 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.active {
+    border-bottom: 5px solid #2AA7FF;
+}
