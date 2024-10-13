@@ -1,9 +1,13 @@
-import React from 'react'
+import HeroSection from "../HeroSection/HeroSection"
 
 const HomePage = () => {
     return (
         <div>
-            HomePage
+            <HeroSection />
+            middleSection
+            Blogs & News
+            frequenlty asked questions
+            Footer
         </div>
     )
 }

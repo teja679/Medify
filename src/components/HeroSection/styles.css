@@ -1,0 +1,153 @@
+.main-section {}
+
+.tag-hero {
+    padding: 2rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 68px;
+    letter-spacing: 2%;
+}
+
+.tag-hero>* {
+    margin: 0;
+}
+
+.tag-hero>p {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0.02em;
+    color: #5C6169;
+}
+
+.tag-hero>span {
+    font-family: Poppins;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 68px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.tag-hero .centers {
+    color: #2AA7FF;
+}
+
+.hero-section {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+}
+
+.hero-image {
+    width: 450px;
+}
+
+.tag-hero>button {
+    border: none;
+    color: #fff;
+    background: #2AA7FF;
+    padding: 10px 1rem;
+    /* margin: 1rem; */
+    border-radius: 10px;
+}
+
+
+.hero-form-div {
+    position: absolute;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 2;
+    width: 80%;
+    top: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #F0F0F0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.card-div {
+    display: flex;
+    gap: 10px;
+}
+
+.card {
+    background: #FAFBFE;
+    padding: 10px 2rem;
+    color: #5C6169;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #FAFBFE;
+}
+
+.card-active {
+    background: #E7F0FF;
+    border: 2px solid #2AA7FF;
+}
+
+.card>img {
+    width: 80px;
+}
+
+.input-div {
+    width: 200px;
+}
+
+.input-div,
+.button-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #9CA3AF;
+    background-color: #FAFBFE;
+}
+
+.input-div>select,
+.input-div>input {
+    color: #9CA3AF;
+    background-color: #FAFBFE;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.button-div,
+.button-div>button {
+    background-color: #2AA7FF;
+    color: #fff;
+    border: none;
+}
+
+.button-div>img {
+    background-color: #2AA7FF;
+    color: #fff;
+}
+
+
+.ads-section {
+    background-color: #fff;
+    /* width: 100%; */
+    gap: 1rem;
+    /* height: 300px; */
+    display: flex;
+    justify-content: space-around;
+    padding: 10rem 1rem 1rem 1rem;
+    overflow: hidden;
+}
