@@ -13,25 +13,13 @@ import './styles.css'
 import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCities, updateHopitalsData } from '../../Slice'
+import Form from '../Form/Form'
 
 const HeroSection = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const [cardSelected, setCardSelected] = useState('')
-    const [state, setState] = useState(useSelector(state => state.state) || '')
-    const [city, setCity] = useState(useSelector(state => state.city) || '')
-    const states = useSelector(state => state.states) || []
-    const cities = useSelector(state => state.cities) || []
-    const hospitalsData = useSelector(state => state.hospitalsData) || []
 
-    useEffect(() => {
-        dispatch(updateCities(state))
-    }, [state, dispatch])
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        
-        dispatch(updateHopitalsData({ state, city }))
+    const handleNavigate = () => {
         navigate('/details')
     }
     const list = [
@@ -57,32 +45,8 @@ const HeroSection = () => {
                     <img className='hero-image' src={heroImage} alt='Hero Img' />
                 </div>
                 {/* <div className='hero-form-div'> */}
-                <form className='hero-form-div' onSubmit={handleSubmit}>
-                    <div className='top-div'>
-                        <div className='input-div'>
-                            <SearchIcon sx={{ color: '#9CA3AF' }} />
-                            <select onChange={(e) => setState(e.target.value)} >
-                                <option value=''>Select State</option>
-                                {states.map(item => {
-                                    return <option key={item} id={item}>{item}</option>
-                                })}
-                            </select>
-                        </div>
-                        <div className='input-div'>
-                            <SearchIcon sx={{ color: '#9CA3AF' }} />
-                            <select id="select-city" onChange={(e) => setCity(e.target.value)} >
-                                <option value=''>Select City</option>
-                                {cities.map(city => {
-                                    return <option key={city} id={city}>{city}</option>
-
-                                })}
-                            </select>
-                        </div>
-                        <div className='button-div'>
-                            <SearchIcon sx={{ color: '#FFFFFF' }} />
-                            <button type='submit'>Search</button>
-                        </div>
-                    </div>
+                <div className='hero-form-div'>
+                    <Form handleNavigate={handleNavigate} flag={true} />
                     <div className='bottom-div'>
                         <p>You may be looking for</p>
                         <div className='card-div'>
@@ -94,7 +58,7 @@ const HeroSection = () => {
                             })}
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
             <div className='ads-section'>
                 <img width='300px' src={img1} alt='ad1' />
