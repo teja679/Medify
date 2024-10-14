@@ -5,54 +5,35 @@ import Drugstore from '../../assets/HeroSection/Drugstore.png'
 import Hospital from '../../assets/HeroSection/Hospital.png'
 import Capsule from '../../assets/HeroSection/Capsule.png'
 import Doctor from '../../assets/HeroSection/Doctor.png'
-import Search from '../../assets/HeroSection/Search.png'
 import img1 from '../../assets/ad1.png'
 import img2 from '../../assets/ad2.png'
 import axios from 'axios'
 import SearchIcon from '@mui/icons-material/Search';
 import './styles.css'
+import { useNavigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCities, updateHopitalsData } from '../../Slice'
 
 const HeroSection = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [cardSelected, setCardSelected] = useState('')
-    const [state, setState] = useState('')
-    const [city, setCity] = useState('')
-    const [states, setStates] = useState(JSON.parse(localStorage.getItem('states')) || [])
-    const [cities, setCities] = useState([])
-    const [hospitalData, setHospitalData] = useState([])
-    const handleChange = (e) => {
-        console.log(e.target.value);
-        setState(e.target.value);
+    const [state, setState] = useState(useSelector(state => state.state) || '')
+    const [city, setCity] = useState(useSelector(state => state.city) || '')
+    const states = useSelector(state => state.states) || []
+    const cities = useSelector(state => state.cities) || []
+    const hospitalsData = useSelector(state => state.hospitalsData) || []
+
+    useEffect(() => {
+        dispatch(updateCities(state))
+    }, [state, dispatch])
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        
+        dispatch(updateHopitalsData({ state, city }))
+        navigate('/details')
     }
-    useEffect(() => {
-        const fetchStates = async () => {
-            const response = await axios.get('https://meddata-backend.onrender.com/states')
-            localStorage.setItem('states', JSON.stringify(response.data))
-            setStates(response.data)
-        }
-        fetchStates()
-    }, [])
-    useEffect(() => {
-        const fetchCities = async () => {
-            if (state) {
-                console.log('state', state)
-                const response = await axios.get(`https://meddata-backend.onrender.com/cities/${state}`)
-                console.log(response.data)
-                setCities(response.data)
-            }
-        }
-        fetchCities()
-    }, [state])
-    useEffect(() => {
-        const fetchData = async () => {
-            if (city && state) {
-                console.log('city', city)
-                const response = await axios.get(`https://meddata-backend.onrender.com/data?state=${state}&city=${city}`)
-                console.log(response.data)
-                setHospitalData(response.data)
-            }
-        }
-        fetchData()
-    }, [city, state])
     const list = [
         { title: 'Doctors', icon: Doctor },
         { title: 'Labs', icon: Drugstore },
@@ -68,17 +49,19 @@ const HeroSection = () => {
                     <span className='medical'>Medical</span>{' '}<span className='centers'>Centers</span>
                     <p>Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.
                     </p>
-                    <button>Find Centers</button>
+                    <a href='/details'>
+                        <button>Find Centers</button>
+                    </a>
                 </div>
                 <div className='hero-image-div'>
                     <img className='hero-image' src={heroImage} alt='Hero Img' />
                 </div>
                 {/* <div className='hero-form-div'> */}
-                <form className='hero-form-div'>
+                <form className='hero-form-div' onSubmit={handleSubmit}>
                     <div className='top-div'>
                         <div className='input-div'>
                             <SearchIcon sx={{ color: '#9CA3AF' }} />
-                            <select onChange={(e) => handleChange(e)} >
+                            <select onChange={(e) => setState(e.target.value)} >
                                 <option value=''>Select State</option>
                                 {states.map(item => {
                                     return <option key={item} id={item}>{item}</option>
