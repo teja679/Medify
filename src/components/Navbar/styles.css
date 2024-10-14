@@ -19,6 +19,7 @@
 
 .navbar-icon>img {
     height: 30px;
+    cursor: pointer;
 }
 
 .navbar-body {
@@ -39,6 +40,7 @@
     border: none;
     background-color: inherit;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .my-bookings-btn {
@@ -48,6 +50,7 @@
     padding: 10px 1rem;
     margin: 1rem;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .active {

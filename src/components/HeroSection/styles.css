@@ -46,12 +46,12 @@
     width: 450px;
 }
 
-.tag-hero>button {
+.tag-hero>a>button {
     border: none;
     color: #fff;
     background: #2AA7FF;
     padding: 10px 1rem;
-    /* margin: 1rem; */
+    cursor: pointer;
     border-radius: 10px;
 }
 

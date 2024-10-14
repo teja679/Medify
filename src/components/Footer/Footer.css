@@ -1,0 +1,40 @@
+.footer-section {
+    background-color: #1B3C74;
+    color: #ffffff;
+    margin: 0;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+.main-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-icons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.links-div {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.icons-div {
+    display: flex;
+    gap: 1rem;
+}
+
+ul>li {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.copyright-div>p {
+    border-top: 1px solid #FFFFFF1A;
+    padding-top: 1rem;
+}

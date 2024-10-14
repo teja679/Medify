@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer"
 import HeroSection from "../HeroSection/HeroSection"
 import MiddleSection from "../MiddleSection/MiddleSection"
 import SwiperC from "../Swiper"
@@ -10,7 +11,7 @@ const HomePage = () => {
             <SwiperC />
             Blogs & News
             frequenlty asked questions
-            Footer
+            <Footer />
         </div>
     )
 }

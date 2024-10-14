@@ -21,8 +21,8 @@ const Carousel = ({ list }) => {
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
         >
-            {list && list.length > 0 && list.map(item =>
-                <SwiperSlide key={item.name} className='specialist-div'>
+            {list && list.length > 0 && list.map((item, index) =>
+                <SwiperSlide key={item.name + index} className='specialist-div'>
                     <img src={item.img} alt={item.name} />
                     <h3>{item.name}</h3>
                     <p>{item.specialized}</p>
