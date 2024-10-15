@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
-import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCities, updateHopitalsData } from '../../Slice';
-import { useSnackbar } from 'notistack-v2-maintained';
-import { Warning } from '@mui/icons-material';
-import Form from '../Form/Form';
 import sensodyneImg from '../../assets/sensodyne_dweb.png'
 import verified from '../../assets/verified.png'
 import hospitalPic from '../../assets/hospitalPic.png'
@@ -15,8 +10,8 @@ import SlotBooking from './SlotBooking';
 
 
 const MedicalCenters = () => {
-  const hospitals = useSelector(state => state.hospitalsData)
-  const state = useSelector(state => state.state)
+  const hospitals = useSelector(state => state.medical.hospitalsData)
+  const state = useSelector(state => state.medical.state)
   return (
     <div className={styles.containerDiv}>
       {hospitals && hospitals.length > 0 ?

@@ -3,14 +3,15 @@ import styles from './styles.module.css'
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack-v2-maintained';
-import { fetchCities, fetchHospitalsData, setCity, setState } from '../../Slice';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'; const Form = ({ handleNavigate = () => { console.log('already in details page') }, flag = false }) => {
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+import { fetchCities, fetchHospitalsData, setCity, setState } from '../Slices/HosiptalSlice';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+const Form = ({ handleNavigate = () => { console.log('already in details page') }, flag = false }) => {
+    const { enqueueSnackbar } = useSnackbar();
     const dispatch = useDispatch();
-    const state = useSelector(state => state.state);
-    const city = useSelector(state => state.city);
-    const states = useSelector(state => state.states);
-    const cities = useSelector(state => state.cities);
+    const state = useSelector(state => state.medical.state);
+    const city = useSelector(state => state.medical.city);
+    const states = useSelector(state => state.medical.states);
+    const cities = useSelector(state => state.medical.cities);
 
     const handleSubmit = (event) => {
         event.preventDefault();

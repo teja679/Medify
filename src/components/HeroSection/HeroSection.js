@@ -11,8 +11,6 @@ import axios from 'axios'
 import SearchIcon from '@mui/icons-material/Search';
 import './styles.css'
 import { useNavigate } from 'react-router'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateCities, updateHopitalsData } from '../../Slice'
 import Form from '../Form/Form'
 
 const HeroSection = () => {

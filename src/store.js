@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./Slice";
+import medicalReducer from "./components/Slices/HosiptalSlice";
+import slotBookingReducer from "./components/Slices/SlotBookingSlice";
 const store = configureStore({
-    reducer: reducer
+    reducer: {
+        medical: medicalReducer,
+        slotBooking: slotBookingReducer,
+    }
 });
 
 export default store;

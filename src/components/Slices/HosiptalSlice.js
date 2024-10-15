@@ -18,7 +18,7 @@ export const fetchHospitalsData = createAsyncThunk(
     const response = await axios.get(
       `https://meddata-backend.onrender.com/data?state=${state}&city=${city}`
     );
-    console.log(response.data)
+    // console.log(response.data)
     return response.data;
   }
 );
@@ -31,7 +31,6 @@ const medicalSlice = createSlice({
     states: [],
     cities: [],
     hospitalsData: [],
-    loading: false,
     error: null,
   },
   reducers: {
@@ -46,45 +45,36 @@ const medicalSlice = createSlice({
     // Fetch States
     builder
       .addCase(fetchStates.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchStates.fulfilled, (state, action) => {
-        state.loading = false;
         state.states = action.payload;
       })
       .addCase(fetchStates.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message;
       });
 
     // Fetch Cities
     builder
       .addCase(fetchCities.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchCities.fulfilled, (state, action) => {
-        state.loading = false;
         state.cities = action.payload;
       })
       .addCase(fetchCities.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message;
       });
 
     // Fetch Hospitals Data
     builder
       .addCase(fetchHospitalsData.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchHospitalsData.fulfilled, (state, action) => {
-        state.loading = false;
         state.hospitalsData = action.payload;
       })
       .addCase(fetchHospitalsData.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message;
       });
   },

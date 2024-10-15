@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Tabs, Tab, Box, Typography, Button, Grid2 } from '@mui/material';
+import { bookSlot } from '../Slices/SlotBookingSlice';
+import { useDispatch } from 'react-redux';
 
 export const TabContent = ({ item1, item2 }) => {
     return (
@@ -12,23 +14,28 @@ export const TabContent = ({ item1, item2 }) => {
     );
 };
 const SlotBooking = ({ hospitalInfo }) => {
+    const dispatch = useDispatch()
     const [selectedTab, setSelectedTab] = useState(0);
+
     const handleSlotBooking = (slot, date, hospitalInfo) => {
-        
+        date = new Date(date).toLocaleDateString('en-IN')
+        console.log('date', date)
+        dispatch(bookSlot({ slot, date, hospitalInfo }))
     }
 
     // Function to get a date 'n' days from today
     const getDate = (daysToAdd = 0) => {
-        const today = new Date();
-        today.setDate(today.getDate() + daysToAdd);
-        return today;
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + daysToAdd);
+        return currentDate;
     };
 
     // Format the date in 'weekday, day, month' format
-    const getFormattedDate = (date) => {
+    const getFormattedDate1 = (date) => {
         const options = { weekday: 'short', day: 'numeric', month: 'short' };
         return new Date(date).toLocaleDateString('en-IN', options);
     };
+
 
     const handleChange = (event, newValue) => {
         setSelectedTab(newValue);
@@ -70,7 +77,7 @@ const SlotBooking = ({ hospitalInfo }) => {
                         sx={{ display: 'flex', flexDirection: 'column' }}
                         label={
                             <TabContent
-                                item1={index === 0 ? 'Today' : index === 1 ? 'Tomorrow' : getFormattedDate(label)}
+                                item1={index === 0 ? 'Today' : index === 1 ? 'Tomorrow' : getFormattedDate1(label)}
                                 item2={slotsData.get(label).morning.length + slotsData.get(label).afternoon.length + slotsData.get(label).evening.length}
                             />
                         }
