@@ -3,12 +3,18 @@ import axios from "axios";
 
 // Thunks to handle async operations
 export const fetchStates = createAsyncThunk('medical/fetchStates', async () => {
+  const data = JSON.parse(localStorage.getItem('states'));
+  if (data) return data;
   const response = await axios.get('https://meddata-backend.onrender.com/states');
+  localStorage.setItem('states', JSON.stringify(response.data));
   return response.data;
 });
 
 export const fetchCities = createAsyncThunk('medical/fetchCities', async (selectedState) => {
+  const data = JSON.parse(localStorage.getItem(selectedState));
+  if (data) return data;
   const response = await axios.get(`https://meddata-backend.onrender.com/cities/${selectedState}`);
+  localStorage.setItem(selectedState, JSON.stringify(response.data));
   return response.data;
 });
 

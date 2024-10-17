@@ -1,11 +1,11 @@
 import React from 'react'
 import './Footer.css'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import logo from '../../assets/logo1.png'
-import fb from '../../assets/FooterSection/fb.png'
-import pinacle from '../../assets/FooterSection/pinacle.png'
-import twitter from '../../assets/FooterSection/twitter.png'
-import youtube from '../../assets/FooterSection/youtube.png'
+import logo from '../assets/logo1.png'
+import fb from '../assets/FooterSection/fb.png'
+import pinacle from '../assets/FooterSection/pinacle.png'
+import twitter from '../assets/FooterSection/twitter.png'
+import youtube from '../assets/FooterSection/youtube.png'
 const Footer = () => {
   return (
     <div className='footer-section'>

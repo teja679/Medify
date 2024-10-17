@@ -13,11 +13,15 @@ const Navbar = () => {
     const handleClick = (item) => {
         setSelected(item);
 
-        // Only navigate if we are not already on the 'details' page
         if (location.pathname !== '/details') {
             navigate('/details');
         }
     };
+    const navigatetoBookings = () => {
+        if (location.pathname !== '/bookings') {
+            navigate('/bookings');
+        }
+    }
 
     return (
         <div className='navbar-container'>
@@ -38,7 +42,7 @@ const Navbar = () => {
                             {item}
                         </button>
                     ))}
-                    <button className='my-bookings-btn'>My Bookings</button>
+                    <button className='my-bookings-btn' onClick={navigatetoBookings}>My Bookings</button>
                 </div>
             </div>
         </div>

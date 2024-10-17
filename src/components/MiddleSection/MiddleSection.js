@@ -37,8 +37,8 @@ const MiddleSection = () => {
         { name: 'Dr. Heena Sachdeva', img: drHeena, specialized: 'Orthopadics' },
         { name: 'Dr. Ankur Sharma', img: drAnkur, specialized: 'Medicine' },
         { name: 'Dr. Ahmad Khan', img: drAhmadKhan, specialized: 'Neurologist' },
-        // { name: 'Dr. Heena Sachdeva', img: drHeena, specialized: 'Orthopadics' },
-        // { name: 'Dr. Ankur Sharma', img: drAnkur, specialized: 'Medicine' },
+        { name: 'Dr. Heena Sachdeva', img: drHeena, specialized: 'Orthopadics' },
+        { name: 'Dr. Ankur Sharma', img: drAnkur, specialized: 'Medicine' },
         // { name: 'Dr. Ahmad Stevens', img: drAhmadStevens, specialized: 'Neurologist' },
     ]
     return (
@@ -59,7 +59,7 @@ const MiddleSection = () => {
             <div className='section2'>
                 <h2>Our Medical Specialist</h2>
                 <div className='section2-div'>
-                    <Carousel list={list2} />
+                    <Carousel list={list2} isCarouselOnHomePage={true} />
                 </div>
             </div>
         </div >

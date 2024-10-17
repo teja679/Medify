@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './styles.module.css'
-import Form from '../Form/Form';
+import Form from '../components/Form/Form';
 import MedicalCenters from './MedicalCenters';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 const DetailsPage = () => {
   return (
     <div className={styles.detailsPage}>

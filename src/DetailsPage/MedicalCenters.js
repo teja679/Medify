@@ -1,28 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import sensodyneImg from '../../assets/sensodyne_dweb.png'
-import verified from '../../assets/verified.png'
-import hospitalPic from '../../assets/hospitalPic.png'
+import sensodyneImg from './../assets/sensodyne_dweb.png'
+import verified from './../assets/verified.png'
+import hospitalPic from './../assets/hospitalPic.png'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Chip, Typography } from '@mui/material';
 import ThumbUpAltSharpIcon from '@mui/icons-material/ThumbUpAltSharp';
 import SlotBooking from './SlotBooking';
+import { useParams } from 'react-router';
+import { fetchHospitalsData } from '../components/Slices/HosiptalSlice';
+import { useSearchParams } from 'react-router-dom';
 
 
 const MedicalCenters = () => {
+  const [seachParams, setSeachParams] = useSearchParams();
+  const dispatch = useDispatch()
+  const [state, setState] = useState(seachParams.get("state"));
+  const [city, setCity] = useState(seachParams.get("city"));
+
+  useEffect(() => {
+    setState(seachParams.get("state"));
+    setCity(seachParams.get("city"));
+  }, [seachParams]);
+
   const hospitals = useSelector(state => state.medical.hospitalsData)
-  const state = useSelector(state => state.medical.state)
   return (
     <div className={styles.containerDiv}>
       {hospitals && hospitals.length > 0 ?
         <>
-          <p><b>{`${hospitals.length} medical centers available in ${state}`}</b></p>
+          <p><b>{`${hospitals.length} medical centers available in ${city}, ${state}`}</b></p>
           <p><img src={verified} alt='Verified' /> Book appointments with minimum wait-time & verified doctor details</p>
           <div className={styles.container}>
             <div className={styles.hContainerDiv}>
               {hospitals.map(item =>
                 // <div key={item['Phone Number']} className={styles.hContainer}>
-                <div key={item['Phone Number']} className={styles.hContainer}>
+                <div key={item['Provider ID']} className={styles.hContainer}>
                   <Accordion>
                     <AccordionSummary>
 

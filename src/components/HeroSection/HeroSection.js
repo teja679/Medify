@@ -17,8 +17,8 @@ const HeroSection = () => {
     const navigate = useNavigate();
     const [cardSelected, setCardSelected] = useState('')
 
-    const handleNavigate = () => {
-        navigate('/details')
+    const handleNavigate = ({ state, city }) => {
+        navigate(`/details?state=${state}&city=${city}`)
     }
     const list = [
         { title: 'Doctors', icon: Doctor },
@@ -44,7 +44,7 @@ const HeroSection = () => {
                 </div>
                 {/* <div className='hero-form-div'> */}
                 <div className='hero-form-div'>
-                    <Form handleNavigate={handleNavigate} flag={true} />
+                    <Form flag={true} />
                     <div className='bottom-div'>
                         <p>You may be looking for</p>
                         <div className='card-div'>

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    bookedSlotsData: {},
+    bookedSlotsData: JSON.parse(localStorage.getItem('bookedSlotsData')) || {},
+    hospitalData: JSON.parse(localStorage.getItem('hospitalData')) || {},
 };
 
 const slotBookingSlice = createSlice({
@@ -10,35 +11,33 @@ const slotBookingSlice = createSlice({
     reducers: {
         bookSlot: (state, action) => {
             const { slot, date, hospitalInfo } = action.payload;
-            console.log('date', date)
             const id = hospitalInfo['Provider ID'];  // Assuming Phone Number is unique for each hospital
-
+            const bookedDate = new Date(date).toLocaleDateString('en-US');
             // Ensure that date exists in the bookedSlotsData
-            if (!state.bookedSlotsData[date]) {
-                state.bookedSlotsData[date] = {};
+            if (!state.bookedSlotsData[bookedDate]) {
+                state.bookedSlotsData[bookedDate] = {};
             }
 
-            // Get the current booked slots for the hospital on the selected date
-            const currentSlots = state.bookedSlotsData[date][id]?.slots || [];
-
-            // If the slot is already booked, don't add it again
+            const currentSlots = state.bookedSlotsData[bookedDate][id] || [];
             const updatedSlots = currentSlots.includes(slot) ? currentSlots : [...currentSlots, slot];
 
-            // Ensure that the hospital ID exists under the selected date and store the updated slot array
-            state.bookedSlotsData[date][id] = {
-                ...state.bookedSlotsData[date][id],  // Preserve existing hospital info and slots
-                hospitalInfo,  // Overwrite or update the hospital information if needed
-                slots: updatedSlots,  // Save the updated slots array
-            };
+            state.bookedSlotsData[bookedDate][id] = updatedSlots;
+            if (!state.hospitalData[id]) {
+                state.hospitalData[id] = { ...hospitalInfo, date };
+            }
+            localStorage.setItem('hospitalData', JSON.stringify(state.hospitalData))
+            localStorage.setItem('bookedSlotsData', JSON.stringify(state.bookedSlotsData))
         },
 
         updateSlots: (state, action) => {
-            const { date } = action.payload;
+            const date = new Date().toLocaleDateString('en-us');
             Object.keys(state.bookedSlotsData).forEach(key => {
-                if (key >= date) {
+                if (key < date) {
                     delete state.bookedSlotsData[key];
                 }
             })
+            localStorage.setItem('hospitalData', JSON.stringify(state.hospitalData))
+            localStorage.setItem('bookedSlotsData', JSON.stringify(state.bookedSlotsData))
         },
         cancelSlot: (state, action) => {
             const { date, hospitalInfo } = action.payload;
@@ -53,10 +52,12 @@ const slotBookingSlice = createSlice({
                     delete state.bookedSlotsData[date];
                 }
             }
+            localStorage.setItem('hospitalData', JSON.stringify(state.hospitalData))
+            localStorage.setItem('bookedSlotsData', JSON.stringify(state.bookedSlotsData))
         },
     },
 });
 
-export const { bookSlot, cancelSlot } = slotBookingSlice.actions;
+export const { bookSlot, cancelSlot, updateSlots } = slotBookingSlice.actions;
 
 export default slotBookingSlice.reducer;

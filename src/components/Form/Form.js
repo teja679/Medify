@@ -5,13 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack-v2-maintained';
 import { fetchCities, fetchHospitalsData, setCity, setState } from '../Slices/HosiptalSlice';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { useNavigate, useParams } from 'react-router';
 const Form = ({ handleNavigate = () => { console.log('already in details page') }, flag = false }) => {
     const { enqueueSnackbar } = useSnackbar();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const state = useSelector(state => state.medical.state);
     const city = useSelector(state => state.medical.city);
-    const states = useSelector(state => state.medical.states);
-    const cities = useSelector(state => state.medical.cities);
+
+    const states = useSelector(currentState => currentState.medical.states);
+    const cities = useSelector(currentState => currentState.medical.cities);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,7 +28,7 @@ const Form = ({ handleNavigate = () => { console.log('already in details page') 
         }
         console.log({ state, city })
         dispatch(fetchHospitalsData({ state, city }))
-        handleNavigate();
+        navigate(`/details?state=${state}&city=${city}`);
     }
     const handleStateChange = (e) => {
         dispatch(setState(e.target.value));
