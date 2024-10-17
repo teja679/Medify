@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import logo1 from '../../assets/logo1.png';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Navbar = () => {
             </div>
             <div className='navbar-body'>
                 <div className='navbar-icon'>
-                    <img src={logo1} alt='logo' />
+                    <a href="/">   <img src={logo1} alt='logo' /></a>
                 </div>
                 <div className='navbar-menu'>
                     {menuItems.map(item => (
