@@ -13,7 +13,7 @@ const Navbar = () => {
     const handleClick = (item) => {
         setSelected(item);
 
-        if (location.pathname !== '/details') {
+        if (item === "Find Doctors" && location.pathname !== '/details') {
             navigate('/details');
         }
     };
@@ -29,9 +29,9 @@ const Navbar = () => {
                 The health and well-being of our patients and their health care team will always be our priority, so we follow the best practices for cleanliness.
             </div>
             <div className='navbar-body'>
-                <div className='navbar-icon'>
-                    <a href="/">   <img src={logo1} alt='logo' /></a>
-                </div>
+                <a href='/' className='navbar-icon'>
+                    <img src={logo1} alt='logo' />
+                </a>
                 <div className='navbar-menu'>
                     {menuItems.map(item => (
                         <button
